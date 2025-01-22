@@ -3,7 +3,7 @@ Name: Nico DuPont
 date: 12/2/24
 description: tic tac toe game
 log: 1.0
-bugs: none
+bugs: does not print tie
 features: coin toss for who goes first
 '''
 import random
@@ -13,6 +13,11 @@ def print_box(box):
       for col in range(0,3):
             print(box[row][col], end=" ")
       print()
+      '''
+      description: entry to the program
+      args: prints the box and the spots that letters can go into
+      returns: the final box to fill letters with
+      '''
 
 def make_move(choice, current_player, box):
    if choice == '1' and box[0][0] not in ["X", "O"]:
