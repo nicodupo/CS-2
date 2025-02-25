@@ -1,0 +1,150 @@
+'''
+name: Nico Dupont
+date: 2/21/25
+log: 1.0
+description: string class for changing name
+'''
+import random
+def reverse_display (sequence):
+    print(sequence[::-1])
+
+def vowel_count(name):
+    vowels = list("aeiou")
+    count = 0
+
+    for n in name:
+        if n in vowels:
+            count += 1
+    return count
+def consonant_frequency(name): #creates function for finding constants in a name
+    consonants = list("bcdfghjklmnpqrstvyz")
+    count = 0
+
+    for n in name:
+        if n in consonants:
+            count += 1
+    
+    return count
+def contains_title(full_name):
+    titles = ["Dr.", "Sir", "Mrs.", "miss."]
+    names = full_name.split(" ")
+    
+    for name in names:
+        if name in titles:
+            return True
+    return False
+def remove_title(full_name):
+    titles = ["Dr.", "Sir"]
+    names = full_name.split(" ")
+
+    for name in names:
+        if name in titles:
+            names.remove(name)
+    return names
+def first_name(full_name): #takes the first name out of the full name
+    names = remove_title(full_name)
+    return names[0]
+def last_name(full_name): #takes the last name out of the full name
+    names = remove_title(full_name)
+    return names[-1]
+def middle_name(full_name): #takes the middle name out of the full name
+    names = (remove_title)(full_name)
+    return names[-2] #make sure to include ALL middle names
+def contains_hyphon(full_name):
+    for letter in len(range(full_name)):
+        if letter == '-': 
+            return True
+def to_lowercase(full_name):
+    lower_word = []
+    for char in full_name: 
+        if 'A' <= char <= 'Z':
+            makelower_char = chr(ord(char) + 32)
+            lower_word += makelower_char
+        else: 
+            lower_word += char
+            return lower_word
+def to_uppercase(full_name):
+    upper_word = []
+    for char in full_name:
+        ascii_val = ord(char)
+        if 97 <= ascii_val <= 122:
+            uppercase_ascii = ascii_val - 32 
+            upper_word += chr(uppercase_ascii)
+    else: 
+        upper_word += char 
+        return upper_word
+
+def mix_up(full_name):
+    full_name = list(full_name)
+    scramble = []
+    for char in  range(len(full_name)): 
+        char = random.choice(full_name)
+        scramble.append(char)
+        full_name.remove(char)
+    return "".join(scramble)
+    
+def contains_palindrome(full_name): 
+    full_name = "".join(full_name.split()).lower()
+    if (len(full_name) <= 1): return True
+    if full_name[0] != full_name[-1]: return False
+    return contains_palindrome(full_name[1:-1])
+
+def make_initials(full_name):
+    words = full_name.split()
+    initials = ''
+    for word in words:
+        initials += word[0].upper() + "."
+    return initials[:-1]
+print  
+
+def main():
+    name = input("What is your name? ")
+    choice = input(''' Which would you like to do?
+    
+1. Reverse and display
+2. Determine the number of vowels. You can prompt user for a particular vowel or create subtotals of each.")
+3. Consonant frequency. Bonus: Subtotals of each consonant
+5 Return first name.
+7. Return last name.
+6. Return middle name(s).
+8. Return boolean if last name contains a hyphen
+9. Function to convert to lowercase
+10. Function to convert to uppercase
+11. Modify array to create a random name (mix up letters)
+12. Return boolean if first name is a palindrome
+13. Return full-name as a sorted array of characters (Bonus)
+14. Build a menu (Bonus)
+13. Make initials from name
+4. Return boolean if name contains a title/distinction
+''')
+
+    if choice == "1":
+        print(reverse_display(name))
+    elif choice == "2":
+        print(vowel_count(name))
+    elif choice == "3":
+        print(consonant_frequency(name))
+    elif choice == "4":
+        print (contains_title(name))
+    elif choice == "5":
+        print(first_name(name))
+    elif choice == "6":
+        print(middle_name(name))
+    elif choice == "7":
+        print(last_name(name))
+    elif choice == "8":
+        print(contains_hyphon(name))
+    elif choice == "9":
+        print(to_lowercase(name))
+    elif choice == "10":
+        print(to_uppercase(name))
+    elif choice =="11": 
+        print(mix_up(name))
+    elif choice == "12":
+        print(contains_palindrome(name))
+    elif choice == "13":
+        print(make_initials(name))
+    elif choice =="14":
+        print(remove_title(name))
+
+main()
