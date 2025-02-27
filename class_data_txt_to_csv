@@ -1,0 +1,29 @@
+'''
+name: Nico Dupont
+date: 2/26/25
+description: sorts student data
+sources: W3schools
+bugs: ?
+log: 1.0
+'''
+import csv #converts it to CSV file
+fhand = open('student_data_cs2.txt', 'r') #opens text
+f = open('my_student_data.csv', 'w') #opens it to CSV
+for line in fhand: #for every line in the file
+    ID = line[0:6].strip() # lines 13 - 24 takes the bytes that hold the type of data your looking for
+    first_name = line[6:21].strip()
+    last_name = line[21:36].strip()
+    grade = line[36:42].strip()
+    GPA = line[42:48].strip()
+    birthdate = line[48:60].strip()
+    gender = line[60:67].strip()
+    class_rank = line[67:76].strip()
+    attendence_pct = line[76:86].strip()
+    honors = line[86:93].strip()
+    sports = line[93:102].strip()
+    club_count = line[102:103].strip()
+   
+    f.write(ID + "," + first_name + "," + last_name + "," + last_name + "," + grade + "," + GPA + "," + birthdate + "," + gender + "," + class_rank + "," + attendence_pct + "," + honors + "," + sports + "," + club_count + "," + "\n")
+    #when it writes to the file it writes in order of the data you are looking for and in individual lines
+
+    
