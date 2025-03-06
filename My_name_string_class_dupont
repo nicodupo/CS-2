@@ -1,0 +1,220 @@
+'''
+name: Nico Dupont
+date: 2/21/25
+log: 1.0
+bugs: some troubles with the contains hyphon function
+description: string class for changing name.
+'''
+import random
+def reverse_display (sequence): #reverses the sequence and displays it
+  
+
+  
+
+    print(sequence[::-1]) 
+
+def vowel_count(name): 
+    '''
+args:   The name or string in which vowels are to be counted.
+raises: If the input is not a string.
+returns: The number of vowels found in the name.
+    '''
+    vowels = list("aeiou")
+    count = 0
+
+    for n in name:
+        if n in vowels:
+            count += 1
+    return count
+def consonant_frequency(name): #creates function for finding constants in a name
+    '''
+    args:    Counts the number of consonants in a given name.
+    raises:  The name or string that consonants are to be counted.
+    returns: If the input has no consonants
+    '''
+    consonants = list("bcdfghjklmnpqrstvyz")
+    count = 0
+    for n in name: #if there is a n in the name at to count
+        if n in consonants:
+            count += 1
+    
+    return count #return final count
+
+def contains_title(full_name): #if your name has a title before it 
+    '''
+    args:  The full name that may contain a title.
+    raises: If the input is not a string.
+    returns: True if a title is found, False otherwise.
+    '''
+    titles = ["Dr.", "Sir", "Mrs.", "miss."] #list of titles
+    names = full_name.split(" ")
+    
+    for name in names:
+        if name in titles: #if it is in the list of titles 
+            return True
+    return False
+def remove_title(full_name):
+    '''
+args: the full name from which the title is to be removed.
+raises: If the input is not a string.
+returns:a name with the title removed
+    '''
+    titles = ["Dr.", "Sir","Mr", "king",]
+    names = full_name.split(" ")
+
+    for name in names:
+        if name in titles:
+            names.remove(name)
+    return names
+def first_name(full_name): #takes the first name out of the full name
+    '''
+    args: The full name from which the first name is to be seperated
+    raises:If the input is not a string.
+    returns: The first name from the full name.
+    '''
+    names = remove_title(full_name)
+    return names[0]
+def last_name(full_name): #takes the last name out of the full name
+    '''
+    args: The full name that the last name is taken from.
+    raises: If the input is not a string.
+    returns: The last name from the full name.
+    '''
+    names = remove_title(full_name)
+    return names[-1]
+def middle_name(full_name): #takes the middle name out of the full name
+    '''
+    args: The full name the middle name is being taken from.
+    raises: If there is no middle name in the full name.
+    returns: The middle name from the full name.
+    '''
+    names = (remove_title)(full_name)
+    return names[-2] #make sure to include ALL middle names
+def contains_hyphon(full_name): #if the name has a hyphon between names
+    '''
+args:The full name to check for a hyphen.
+raises:  If the input is not a string.
+returns: True if the name contains a hyphen
+    '''
+    for letter in len(range(full_name)):
+        if letter == '-': 
+            return True #if one is found return true  
+def to_lowercase(full_name): # take name and convert it to lowercase
+    '''
+    args:The full name to be converted to lowercase.
+    raises:If the input is not a string.
+    returns:  The full name with all letters in lowercase.
+    '''
+    lower_word = []
+    for char in full_name: #takes in each character 
+        if 'A' <= char <= 'Z': #all leters between A and Z should be converted
+            makelower_char = chr(ord(char) + 32)
+            lower_word += makelower_char
+        else: 
+            lower_word += char
+    return lower_word #return in lowercase 
+def to_uppercase(full_name): #makes the letters im the name convert to upper case
+    '''
+args:The full name to be converted to uppercase.
+raises: If the input is not a string.
+returns: The full name with all letters in uppercase.
+    '''
+    upper_word = []
+    for char in full_name:
+        ascii_val = ord(char)
+        if 97 <= ascii_val <= 122:
+            uppercase_ascii = ascii_val - 32 
+            upper_word += chr(uppercase_ascii)
+        else: 
+            upper_word += char 
+    return upper_word
+
+def mix_up(full_name):
+    '''
+args:  The full name scrambled.
+raises:If the input is not a string.
+returns:A scrambled version of the full name
+    '''
+    full_name = list(full_name)
+    scramble = []
+    for char in  range(len(full_name)): 
+        char = random.choice(full_name)
+        scramble.append(char)
+        full_name.remove(char)
+    return "".join(scramble)
+    
+def contains_palindrome(full_name): 
+    '''
+    args: The full name to check for a palindrome.
+    raises: If the input is not a string.
+    returns: True if the name contains a palindrome return False otherwise.
+    '''
+    full_name = "".join(full_name.split()).lower()
+    if (len(full_name) <= 1): return True
+    if full_name[0] != full_name[-1]: return False
+    return contains_palindrome(full_name[1:-1])
+
+def make_initials(full_name):
+    '''
+    args:The full name that the initials come from.
+    raises: If the input is not a string.
+    returns:The initials formed from the first letter of each part of the name.
+    '''
+    words = full_name.split()
+    initials = ''
+    for word in words:
+        initials += word[0].upper() + "."
+    return initials[:-1]
+print  
+
+def main():
+    name = input("What is your name? ")
+    choice = input(''' Which would you like to do?
+    
+1. Reverse and display
+2. Determine the number of vowels. You can prompt user for a particular vowel or create subtotals of each.")
+3. Consonant frequency. Bonus: Subtotals of each consonant
+5 Return first name.
+7. Return last name.
+6. Return middle name(s).
+8. Return boolean if last name contains a hyphen
+9. Function to convert to lowercase
+10. Function to convert to uppercase
+11. Modify array to create a random name (mix up letters)
+12. Return boolean if first name is a palindrome
+13. Return full-name as a sorted array of characters (Bonus)
+14. Build a menu (Bonus)
+13. Make initials from name
+4. Return boolean if name contains a title/distinction
+''')
+#menu
+    if choice == "1":
+        print(reverse_display(name))
+    elif choice == "2":
+        print(vowel_count(name))
+    elif choice == "3":
+        print(consonant_frequency(name))
+    elif choice == "4":
+        print (contains_title(name))
+    elif choice == "5":
+        print(first_name(name))
+    elif choice == "6":
+        print(middle_name(name))
+    elif choice == "7":
+        print(last_name(name))
+    elif choice == "8":
+        print(contains_hyphon(name))
+    elif choice == "9":
+        print(to_lowercase(name))
+    elif choice == "10":
+        print(to_uppercase(name))
+    elif choice =="11": 
+        print(mix_up(name))
+    elif choice == "12":
+        print(contains_palindrome(name))
+    elif choice == "13":
+        print(make_initials(name))
+    elif choice =="14":
+        print(remove_title(name))
+
+main()
