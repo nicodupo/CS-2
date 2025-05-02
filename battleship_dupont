@@ -1,8 +1,8 @@
 '''
 name: Nico Dupont
 date: 4/28/25
-log:
-bugs:
+log:1.0
+bugs:with the row and col
 description: simple 5x5 battleship code
 tester: jack pauley
 '''
